@@ -11,7 +11,6 @@ Yalnızca OPTİMİZASYON adımını çalıştırır; talep tahmini modülü (for
 Girdi (Bölüm 4) — sırayla denenir:
     1) TEKNOFEST_INPUT_FILE ortam değişkenindeki mutlak yol
     2) data/one_week_backtest.xlsx
-    3) Talep-tahmini.xlsx  (yalnız yerel geliştirme yedeği)
 
 Çıktı (Bölüm 5): <cikti_klasoru>/Tasima-plani.xlsx — klasör teknofest_manifest.json
 içindeki "cikti_klasoru" alanından okunur.
@@ -28,7 +27,6 @@ MANIFEST = os.path.join(BASE, "teknofest_manifest.json")
 
 ENV_VAR = "TEKNOFEST_INPUT_FILE"
 FALLBACK_INPUT = os.path.join("data", "one_week_backtest.xlsx")
-DEV_INPUT = "Talep-tahmini.xlsx"
 
 # K2 ALNS bütçesi: teslim koşusuyla birebir aynı (python optimizer_v5.py --iters 1200).
 # Deterministik → sonuç makineden bağımsız ve tekrarlanabilir.
@@ -54,11 +52,9 @@ def _resolve_input():
         if os.path.isfile(env):
             return env, f"{ENV_VAR} ortam değişkeni"
         print(f"UYARI: {ENV_VAR}={env} bulunamadı; yedek yola düşülüyor.", flush=True)
-    for rel, etiket in ((FALLBACK_INPUT, "sabit göreli yol"),
-                        (DEV_INPUT, "yerel geliştirme yedeği")):
-        yol = os.path.join(BASE, rel)
-        if os.path.isfile(yol):
-            return yol, etiket
+    yol = os.path.join(BASE, FALLBACK_INPUT)
+    if os.path.isfile(yol):
+        return yol, "sabit göreli yol"
     return None, None
 
 

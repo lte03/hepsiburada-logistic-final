@@ -8,5 +8,5 @@
   "girdi_yedek_yolu": "data/one_week_backtest.xlsx",
   "cikti_klasoru": "out/",
   "beklenen_ciktilar": ["Tasima-plani.xlsx"],
-  "notlar": "TODO_notlar — main.py yalnizca optimizasyonu calistirir; talep tahmini modulu (forecast_v5.py) cagrilmaz. Zaman ekseni ve talep tamamlanma saatleri girdi dosyasindan turetilir, kodda sabit takvim haftasi yoktur. Statik referans veriler data/ altindadir. requirements.txt yalnizca optimizasyonun ihtiyac duydugu paketleri icerir; tahmin modulunun bagimliliklari requirements-forecast.txt dosyasindadir."
+  "notlar": "main.py yalnizca optimizasyonu calistirir; talep tahmini modulu (forecast_v5.py) cagrilmaz. Zaman ekseni ve talep tamamlanma saatleri girdi dosyasindan turetilir, kodda sabit takvim haftasi yoktur. Statik referans veriler data/ altindadir. requirements.txt yalnizca optimizasyonun ihtiyac duydugu paketleri icerir."
 }
